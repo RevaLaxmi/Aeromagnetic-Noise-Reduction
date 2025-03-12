@@ -3,7 +3,6 @@
 src3
 MAE: 153.466, RMSE: 191.474, Correlation: 1.000
 
-Alright, let me break it down step by step in **simple terms**, keeping it focused on **what each script does** and how it relates to the **flight data (Flt1003_train.h5 & Flt1005_train.h5)**.
 
 ---
 
@@ -90,9 +89,3 @@ Alright, let me break it down step by step in **simple terms**, keeping it focus
 
 ---
 
-### **🚀 Next Steps?**
-- Do you need help debugging `evaluate.py`?
-- Are you looking for improvements in training/testing?
-- Need to upload this to GitHub without hitting the file size limit?
-
-Let me know how you want to proceed! 🚀
