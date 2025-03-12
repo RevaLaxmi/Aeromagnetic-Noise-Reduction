@@ -26,6 +26,14 @@ Alright, let me break it down step by step in **simple terms**, keeping it focus
    - **66% of the data → Training (`train_X`, `train_y`)**
    - **34% of the data → Testing (`test_X`, `test_y`)**
    - Saves these as `.npy` files for later use.
+  
+   - Training Data: (160030, 3) → 160,030 samples with 3 features each.
+   - Testing Data: (81731, 3) → 81,731 samples with 3 features each.
+  
+   - If you train on all the data, the model might just memorize it instead of learning general patterns. Testing on unseen data helps check if the model can make accurate predictions on real-world cases.
+
+
+
 
 📌 **Final Output:**  
 - **Preprocessed data files:** `train_X.npy`, `train_y.npy`, `test_X.npy`, `test_y.npy`
