@@ -1,0 +1,47 @@
+import h5py
+import numpy as np
+from sklearn.preprocessing import StandardScaler
+import pickle
+import os
+
+DATA_PATH = "C:/Users/Reva Laxmi Chauhan/Desktop/Aeromagnetic-Noise-Reduction/src3/data/"
+
+def load_and_preprocess(flight_path, scaler=None, fit_scaler=False):
+    with h5py.File(flight_path, "r") as f:
+        X = np.column_stack([
+            np.array(f["flux_c_x"]),
+            np.array(f["flux_c_y"]),
+            np.array(f["flux_c_z"])
+        ])
+        y = np.column_stack([
+            np.array(f["flux_b_x"]),
+            np.array(f["flux_b_y"]),
+            np.array(f["flux_b_z"])
+        ])
+
+    if fit_scaler:
+        scaler = StandardScaler()
+        X = scaler.fit_transform(X)
+        with open(os.path.join(DATA_PATH, "scaler.pkl"), "wb") as f:
+            pickle.dump(scaler, f)
+        print("Scaler fitted and saved.")
+    else:
+        X = scaler.transform(X)
+
+    return X, y
+
+# Load training data and fit scaler
+train_X, train_y = load_and_preprocess(os.path.join(DATA_PATH, "Flt1003_train.h5"), fit_scaler=True)
+print(f"Training data shape: X={train_X.shape}, y={train_y.shape}")
+
+# Load test data using saved scaler
+scaler = pickle.load(open(os.path.join(DATA_PATH, "scaler.pkl"), "rb"))
+test_X, test_y = load_and_preprocess(os.path.join(DATA_PATH, "Flt1005_train.h5"), scaler=scaler)
+print(f"Test data shape: X={test_X.shape}, y={test_y.shape}")
+
+# Save processed data
+np.save(os.path.join(DATA_PATH, "train_X.npy"), train_X)
+np.save(os.path.join(DATA_PATH, "train_y.npy"), train_y)
+np.save(os.path.join(DATA_PATH, "test_X.npy"), test_X)
+np.save(os.path.join(DATA_PATH, "test_y.npy"), test_y)
+print("Processed datasets saved.")
