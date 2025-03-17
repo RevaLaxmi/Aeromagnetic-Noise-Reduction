@@ -7,7 +7,7 @@ MAE: 153.466, RMSE: 191.474, Correlation: 1.000
 ---
 
 ## **Step 1: Data Preprocessing (`preprocess.py`)**
-📂 **Files Used:**
+**Files Used:**
 - **Training Data** → `Flt1003_train.h5`
 - **Testing Data** → `Flt1005_train.h5`
 
@@ -33,15 +33,14 @@ MAE: 153.466, RMSE: 191.474, Correlation: 1.000
 
 
 
-
-📌 **Final Output:**  
+**Final Output:**  
 - **Preprocessed data files:** `train_X.npy`, `train_y.npy`, `test_X.npy`, `test_y.npy`
 - **Scaler file:** `scaler.pkl`  
 
 ---
 
 ## **Step 2: Model Training (`train.py`)**
-📂 **Files Used:**
+**Files Used:**
 - `train_X.npy`, `train_y.npy` (processed training data)
 
 ### **🔹 What Happens Here?**
@@ -56,13 +55,13 @@ MAE: 153.466, RMSE: 191.474, Correlation: 1.000
    - Trains for **50 epochs** with batch size **64**.
 5. **Saves the trained model** as `lstm_model.h5`.
 
-📌 **Final Output:**  
+**Final Output:**  
 - **Trained LSTM model:** `lstm_model.h5`
 
 ---
 
 ## **Step 3: Model Evaluation (`evaluate.py`)**
-📂 **Files Used:**
+**Files Used:**
 - `test_X.npy`, `test_y.npy` (processed testing data)
 - `lstm_model.h5` (trained model)
 
@@ -76,16 +75,8 @@ MAE: 153.466, RMSE: 191.474, Correlation: 1.000
    - **Root Mean Squared Error (RMSE)** → Measures squared error.
    - **Correlation Coefficient** → Checks how well predictions match actual values.
 
-📌 **Final Output:**  
-- **Predictions (`pred_y`)**
+**Final Output:**  
 - **Evaluation metrics (MAE, RMSE, Correlation)**
-
----
-
-## **💡 TL;DR (What We Did)**
-1. **Preprocessing** → Extracted flight sensor data, scaled it, and split it into training (`Flt1003_train.h5`) and testing (`Flt1005_train.h5`).
-2. **Training** → Built an LSTM model, trained it on the processed `Flt1003_train.h5` data, and saved the trained model.
-3. **Evaluation** → Used `Flt1005_train.h5` to test the model and computed performance metrics.
 
 ---
 
