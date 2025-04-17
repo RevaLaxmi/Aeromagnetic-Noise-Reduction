@@ -1,3 +1,78 @@
+# Aeromagnetic Noise Reduction - MLP Model
+
+## Overview
+
+This repository contains a machine learning model designed to predict the target variable from aeromagnetic data using a **Multilayer Perceptron (MLP)** architecture. The model is trained to predict a continuous target variable, with the aim of reducing noise in aeromagnetic data and providing high accuracy in predictions.
+
+## Model Results
+
+### Target Variable
+
+- **Min of True Target**: 52,948.136
+- **Max of True Target**: 55,282.793
+- **Mean of True Target**: 53,711.41
+
+The true target values lie within the range of approximately 52,948 to 55,282, with a mean value of 53,711.41.
+
+### Performance Metrics
+
+- **Mean Squared Error (MSE)**: 1.3289
+- **Root Mean Squared Error (RMSE)**: 1.1532
+- **Percentage Error**: 0.0021%
+
+The **RMSE** value of approximately 1.1532 indicates that the model’s average prediction deviates from the true target value by around 1.15 units. When expressed as a percentage of the mean target value, the model achieves an **extremely low error of 0.0021%**. This highlights that the model’s predictions are highly accurate and well-calibrated with the original data scale.
+
+### Conclusion
+
+- The **low RMSE** and corresponding **percentage error** indicate that the model captures the underlying data patterns effectively, with minimal overfitting or underfitting.
+- The model has been optimized to predict the target variable with negligible deviation, suggesting its high performance in predicting unseen data.
+
+## MLP Architecture
+
+### Layer Configuration
+
+1. **Input Layer**: 
+   - Number of neurons equal to the number of input features (magnetometer data).
+   
+2. **Hidden Layer 1**:
+   - 50 neurons with **tanh** activation function for non-linear relationship modeling.
+   
+3. **Hidden Layer 2**:
+   - 30 neurons with **tanh** activation for further feature refinement.
+
+4. **Hidden Layer 3**:
+   - 10 neurons with **tanh** activation to extract deeper patterns.
+
+5. **Output Layer**:
+   - 1 neuron (regression task, predicting a continuous value). No activation (linear output).
+
+### Compilation
+
+- **Loss Function**: Mean Squared Error (MSE), suitable for regression tasks.
+- **Optimizer**: Adam (adaptive gradient descent).
+
+### Training
+
+- **Epochs**: 100 iterations through the dataset.
+- **Batch Size**: 32 samples per batch for weight updates.
+- **Validation**: Performance is evaluated on the validation set during training to monitor for overfitting or underfitting.
+
+### Activation Functions
+
+- The **tanh** activation function is used throughout the hidden layers to model non-linear relationships in the data. This was chosen after experimentation, particularly when some weights were going negative during feature selection.
+
+## Notes
+
+- **Model Variability**: Performance may vary slightly between training sessions due to factors like the number of epochs and dropout usage during training. This is typical in deep learning models, and the results depend on various training parameters.
+
+
+
+
+
+
+
+# -x-x-x-x-x-x-x-
+
 # Aeromagnetic-Noise-Reduction
 
 src3
